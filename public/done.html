@@ -23,50 +23,36 @@
    </header>
    <main>
         <div class="title"><h1>Done</h1></div>
-        <div class="tasks">
-            <div class="task border-green">
-                <p class="task-title">Task5</p>
-                <hr class="task-hr">
-                <p class="task-body">Do something more more more</p>
-                <button class="task-not-button">Not Done</button>
-            </div>
-            <div class="task border-red">
-                <p class="task-title">Task6</p>
-                <hr class="task-hr">
-                <p class="task-body">Do something</p>
-                <button class="task-not-button">Not Done</button>
-            </div>
-            <div class="task border-orange">
-                <p class="task-title">Task7</p>
-                <hr class="task-hr">
-                <p class="task-body">Do something more</p>
-                <button class="task-not-button">Not Done</button>
-            </div>
-            <div class="task border-yellow">
-                <p class="task-title">Task8</p>
-                <hr class="task-hr">
-                <p class="task-body">Do something more more</p>
-                <button class="task-not-button">Not Done</button>
-            </div>
-            <div class="task border-green">
-                <p class="task-title">Task9</p>
-                <hr class="task-hr">
-                <p class="task-body">Do something more more more</p>
-                <button class="task-not-button">Not Done</button>
-            </div>
-            <div class="task border-orange">
-                <p class="task-title">Task10</p>
-                <hr class="task-hr">
-                <p class="task-body">Do something more</p>
-                <button class="task-not-button">Not Done</button>
-            </div>
-            <div class="task border-yellow">
-                <p class="task-title">Task11</p>
-                <hr class="task-hr">
-                <p class="task-body">Do something more more</p>
-                <button class="task-not-button">Not Done</button>
-            </div>
+        <div class="tasks" id="tasks">
         </div>
    </main>
 </body>
+<script>
+    var data = null;
+ data = fetch('/getDone')
+    .then(response => {
+      return response.json();
+    })
+    .then(obj => {return  obj});
+    data.then(function(val) {
+        data = val
+    console.log(data);
+});
+
+data.then(function(result) {
+    tasks = document.getElementById('tasks');
+    for (var key in data) {
+        var item = data[key];
+        tasks.innerHTML += 
+        `
+            <div class="task border-${item.color.toLowerCase()}">
+                <p class="task-title">${item.title}</p>
+                <hr class="task-hr">
+                <p class="task-body">${item.body}</p>
+                <button class="task-button">Done</button>
+            </div>
+        `
+    }
+});
+</script>
 </html>
