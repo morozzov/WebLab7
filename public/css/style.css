@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'YogaSansLigh';
+  src: url(*/fonts/YogaSansLight.ttf);
+}
+@font-face {
+  font-family: 'AntoniaTextMedium';
+  src: url(*/fonts/AntoniaRegular.ttf);
+}
+.logo{
+  text-decoration: none;
+  color: black;
+}
+body {
+  background-color: #fcfcfc;
+}
+header{
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: #ffffff;
+  border: #4d4d4d solid 1px;
+  border-radius: 10px;
+}
+.box .select {
+  color: #58595b;
+  font-size: large;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container h1{
+  margin: 1px;
+  font-family: YogaSansLigh;
+  font-weight: lighter;
+}
+.container h2{
+  margin: 1px;
+  font-family: YogaSansLigh;
+  font-weight: lighter;
+}
+.container p{
+  margin-top: auto;
+  margin-bottom: auto;
+  font-family: YogaSansLigh;
+  font-weight: lighter;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.box a {
+  margin-left: 10px;
+  font-family: YogaSansLigh;
+  text-decoration: none;
+  color: black;
+  font-size: large;
+}
+.box a:hover {
+  color: #58595b;
+}
+
+.border-red {
+  border: #b40000 solid 1px;
+}
+.border-orange {
+  border: #ff833b solid 1px;
+}
+.border-yellow {
+  border: #d8cc1f solid 1px;
+}
+.border-green {
+  border: #4e962c solid 1px;
+}
+.border-black {
+  border: #000000 solid 1px;
+}
+
+.tasks {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: start;
+}
+.task {
+  margin: 15px;
+  font-family: YogaSansLigh;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150px;
+  position: relative;
+  background-color: #ffffff;
+}
+.task-title {
+  margin: 0px;
+  font-size: x-large;
+}
+.task-new-title {
+  margin: 0px;
+  width: 145px;
+  height: 23px;
+  border: none;
+  font-family: YogaSansLigh;
+  font-size: x-large;
+}
+.task-body {
+  font-size: large;
+  height: 50px;
+  margin-bottom: 25px;
+  overflow: scroll;
+}
+.task-new-body {
+  margin-bottom: 25px;
+  border: none;
+  font-family: YogaSansLigh;
+  font-size: large;
+  height: 50px;
+  width: 145px;
+}
+.task-hr {
+  margin: 0px;
+  border: solid 1px;
+  opacity: 0.2;
+  width: 100%;
+}
+.task-button {
+  position: absolute;
+  bottom: 10px;
+  width: 150px;
+  color: #047400;
+}
+.task-new-button {
+  position: absolute;
+  bottom: 10px;
+  width: 80px;
+  color: #000000;
+}
+.task-new-select {
+  position: relative;
+  bottom: -5px;
+}
+.task-not-button {
+  position: absolute;
+  bottom: 10px;
+  width: 150px;
+  color: #740000;
+}
+
+.about-text {
+  font-family: YogaSansLigh;
+  font-size: large;
+}
+.about-text a {
+  text-decoration: none;
+  color: rgb(110, 68, 101);
+}
+.about-text .contacts {
+  margin-top: 35px;
+  margin-bottom: 0px;
+}
+.about-text .about-body {
+  width: 100%;
+  text-align: center;
+}
+main {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.title {
+  font-family: YogaSansLigh;
+  width: 100%;
+  text-align: center;
+}
