@@ -61,10 +61,13 @@ data.then(function(result) {
         tasks.innerHTML += 
         `
             <div class="task border-${item.color.toLowerCase()}">
+                
                 <p class="task-title">${item.title}</p>
                 <hr class="task-hr">
                 <p class="task-body">${item.body}</p>
-                <button class="task-button">Done</button>
+                <form method="POST" action="/setdone/${item.id}"">
+                    <button class="task-button">Done</button>
+                </form>
             </div>
         `
     }

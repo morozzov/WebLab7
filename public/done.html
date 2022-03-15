@@ -49,7 +49,9 @@ data.then(function(result) {
                 <p class="task-title">${item.title}</p>
                 <hr class="task-hr">
                 <p class="task-body">${item.body}</p>
-                <button class="task-button">Done</button>
+                <form method="POST" action="/unsetdone/${item.id}"">
+                    <button class="task-not-button">Not Done</button>
+                </form>
             </div>
         `
     }
