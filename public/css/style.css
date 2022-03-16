@@ -6,12 +6,13 @@
   font-family: 'AntoniaTextMedium';
   src: url(*/fonts/AntoniaRegular.ttf);
 }
-.logo{
-  text-decoration: none;
-  color: black;
-}
+
 body {
   background-color: #fcfcfc;
+}
+main {
+  margin-left: 10%;
+  margin-right: 10%;
 }
 header{
   padding: 15px;
@@ -20,6 +21,11 @@ header{
   background-color: #ffffff;
   border: #4d4d4d solid 1px;
   border-radius: 10px;
+}
+
+.logo{
+  text-decoration: none;
+  color: black;
 }
 .box .select {
   color: #58595b;
@@ -138,16 +144,17 @@ header{
   width: 80px;
   color: #000000;
 }
-.task-new-select {
-  position: relative;
-  bottom: -5px;
-}
 .task-not-button {
   position: absolute;
   bottom: 10px;
   width: 150px;
   color: #740000;
 }
+.task-new-select {
+  position: relative;
+  bottom: -5px;
+}
+
 
 .about-text {
   font-family: YogaSansLigh;
@@ -164,10 +171,6 @@ header{
 .about-text .about-body {
   width: 100%;
   text-align: center;
-}
-main {
-  margin-left: 10%;
-  margin-right: 10%;
 }
 .title {
   font-family: YogaSansLigh;
