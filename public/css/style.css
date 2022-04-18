@@ -137,18 +137,21 @@ header{
   bottom: 10px;
   width: 150px;
   color: #047400;
+  cursor: pointer;
 }
 .task-new-button {
   position: absolute;
   bottom: 10px;
   width: 80px;
   color: #000000;
+  cursor: pointer;
 }
 .task-not-button {
   position: absolute;
   bottom: 10px;
   width: 150px;
   color: #740000;
+  cursor: pointer;
 }
 .task-new-select {
   position: relative;
@@ -176,4 +179,19 @@ header{
   font-family: YogaSansLigh;
   width: 100%;
   text-align: center;
+}
+
+.cross {
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 25px;
+  height: 25px;
+  font-size: large;
+  margin: 0;
+  margin-top: -29px;
+  margin-right: -16px;
+  border-radius: 0 10px 0 10px;
+  text-align: center;
+  color: rgb(163, 17, 17);
+  cursor: pointer;
 }

@@ -55,33 +55,39 @@ app.get("/about", function (request, response) {
     response.sendFile(__dirname + "/public/about.html");
 });
 
-app.post("/", urlencodedParser, function (request, response) {
+app.post("/", urlencodedParser, async function (request, response) {
     if(!request.body) return response.sendStatus(400);
     console.log(request.body);
-    newTask(request.body.newTitle, request.body.newBody, request.body.newColor)
+    await newTask(request.body.newTitle, request.body.newBody, request.body.newColor)
     response.redirect("/");
 });
 
-app.post("/setdone/:id", urlencodedParser, function (request, response) {
+app.post("/setdone/:id", urlencodedParser, async function (request, response) {
     if(!request.params.id) return response.sendStatus(400);
-    setDone(request.params.id)
+    await setDone(request.params.id)
     response.redirect("/");
 });
 
-app.post("/unsetdone/:id", urlencodedParser, function (request, response) {
+app.post("/unsetdone/:id", urlencodedParser, async function (request, response) {
     if(!request.params.id) return response.sendStatus(400);
-    unsetDone(request.params.id)
+    await unsetDone(request.params.id)
+    response.redirect("/done");
+});
+
+app.post("/delete/:id", urlencodedParser, async function (request, response) {
+    if(!request.params.id) return response.sendStatus(400);
+    await deleteTask(request.params.id)
     response.redirect("/done");
 });
    
 app.listen(3000, ()=>console.log("Server started..."));
 
-function newTask(newTitle, newBody, newColor) {
+async function newTask(newTitle, newBody, newColor) {
 
     var pgp = require("pg-promise")(/*options*/);
     var db = pgp("postgres://postgres:123@localhost:5432/postgres");
     
-    db.one(`insert into tasks (title, body, color, is_done)values ('${newTitle}','${newBody}','${newColor}',false);`)
+    await db.one(`insert into tasks (title, body, color, is_done)values ('${newTitle}','${newBody}','${newColor}',false);`)
     .then(function () {
         console.log("SUCCESS");
     })
@@ -90,11 +96,11 @@ function newTask(newTitle, newBody, newColor) {
     });
 }
 
-function setDone(id) {
+async function setDone(id) {
     var pgp = require("pg-promise")(/*options*/);
     var db = pgp("postgres://postgres:123@localhost:5432/postgres");
     
-    db.one(`update tasks set is_done = true where id = ${id};`)
+    await db.one(`update tasks set is_done = true where id = ${id};`)
     .then(function () {
         console.log("SUCCESS");
     })
@@ -103,11 +109,24 @@ function setDone(id) {
     });
 }
 
-function unsetDone(id) {
+async function unsetDone(id) {
     var pgp = require("pg-promise")(/*options*/);
     var db = pgp("postgres://postgres:123@localhost:5432/postgres");
     
-    db.one(`update tasks set is_done = false where id = ${id};`)
+    await db.one(`update tasks set is_done = false where id = ${id};`)
+    .then(function () {
+        console.log("SUCCESS");
+    })
+    .catch(function (error) {
+        console.log("ERROR:", error);
+    });
+}
+
+async function deleteTask(id) {
+    var pgp = require("pg-promise")(/*options*/);
+    var db = pgp("postgres://postgres:123@localhost:5432/postgres");
+    
+    await db.one(`delete from tasks where id = ${id};`)
     .then(function () {
         console.log("SUCCESS");
     })
