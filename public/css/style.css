@@ -27,6 +27,9 @@ header{
   text-decoration: none;
   color: black;
 }
+.logo:hover{
+  color: #34bae2;
+}
 .box .select {
   color: #58595b;
   font-size: large;
@@ -67,6 +70,7 @@ header{
 }
 .box a:hover {
   color: #58595b;
+  font-size: x-large;
 }
 
 .border-red {
