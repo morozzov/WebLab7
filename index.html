@@ -1,19 +1,24 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tasks</title>
     <link rel="stylesheet" href="*/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 </head>
+
 <body>
-   <header>
+    <header>
         <div class="container">
             <div>
-                <a href="/" class="logo"><h2>Logo</h2></a>
+                <a href="/" class="logo">
+                    <h2>Logo</h2>
+                </a>
             </div>
             <div class="box">
                 <a href="/" class="select">Tasks</a>
@@ -21,11 +26,13 @@
                 <a href="about">About</a>
             </div>
         </div>
-   </header>
-   <main>
-        <div class="title"><h1>Tasks</h1></div>
+    </header>
+    <main>
+        <div data-aos="fade-down" class="title">
+            <h1>Tasks</h1>
+        </div>
         <div class="tasks" id="tasks">
-            <div class="task border-black">
+            <div data-aos="fade-up" class="task border-black">
                 <form method="POST" action="">
                     <input class="task-new-title" name="newTitle" placeholder="Title">
                     <hr class="task-hr">
@@ -40,27 +47,31 @@
                 </form>
             </div>
         </div>
-   </main>
+    </main>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 <script>
     var data = null;
- data = fetch('/get')
-    .then(response => {
-      return response.json();
-    })
-    .then(obj => {return  obj});
-    data.then(function(val) {
+    data = fetch('/get')
+        .then(response => {
+            return response.json();
+        })
+        .then(obj => { return obj });
+    data.then(function (val) {
         data = val
-    console.log(data);
-});
+        console.log(data);
+    });
 
-data.then(function(result) {
-    tasks = document.getElementById('tasks');
-    for (var key in data) {
-        var item = data[key];
-        tasks.innerHTML += 
-        `
-            <div class="task border-${item.color.toLowerCase()}">
+    data.then(function (result) {
+        tasks = document.getElementById('tasks');
+        for (var key in data) {
+            var item = data[key];
+            tasks.innerHTML +=
+                `
+            <div data-aos="fade-up" class="task border-${item.color.toLowerCase()}">
                 
                 <p class="task-title">${item.title}</p>
                 <hr class="task-hr">
@@ -70,7 +81,8 @@ data.then(function(result) {
                 </form>
             </div>
         `
-    }
-});
+        }
+    });
 </script>
+
 </html>

@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Done</title>
     <link rel="stylesheet" href="*/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -26,13 +27,17 @@
         </div>
     </header>
     <main>
-        <div class="title">
+        <div data-aos="fade-down" class="title">
             <h1>Done</h1>
         </div>
         <div class="tasks" id="tasks">
-            
+
         </div>
     </main>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 <script>
     var data = null;
@@ -47,26 +52,26 @@
     });
 
     data.then(function (result) {
-        
+
         tasks = document.getElementById('tasks');
         for (var key in data) {
             var item = data[key];
             tasks.innerHTML +=
-                `
-            <div class="task border-${item.color.toLowerCase()}">
-                <div class="box">
-                    <p class="task-title">${item.title}</p>
-                    <form method="POST" style="margin-top: -27px;" action="/delete/${item.id}">
-                            <input type="submit" value="x" class="cross border-${item.color.toLowerCase()}"></input>
+            `
+                <div data-aos="fade-up" class="task border-${item.color.toLowerCase()}">
+                    <div class="box">
+                        <p class="task-title">${item.title}</p>
+                        <form method="POST" style="margin-top: -27px;" action="/delete/${item.id}">
+                                <input type="submit" value="x" class="cross border-${item.color.toLowerCase()}"></input>
+                        </form>
+                    </div>
+                    <hr class="task-hr">
+                    <p class="task-body">${item.body}</p>
+                    <form method="POST" action="/unsetdone/${item.id}">
+                        <button class="task-not-button">Not Done</button>
                     </form>
                 </div>
-                <hr class="task-hr">
-                <p class="task-body">${item.body}</p>
-                <form method="POST" action="/unsetdone/${item.id}">
-                    <button class="task-not-button">Not Done</button>
-                </form>
-            </div>
-        `
+            `
         }
     });
 </script>
